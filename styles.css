@@ -1,75 +1,104 @@
-* {
-    padding: 0px;
-    margin: 0px;
+/* Cinematic Space Background */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Orbitron', sans-serif;
 }
-/* Space Background */
+
 .space-background {
     position: relative;
     width: 100%;
     height: 100vh;
-    background: radial-gradient(circle, rgba(18, 32, 63, 1) 0%, rgba(4, 9, 30, 1) 100%);
+    background: linear-gradient(135deg, #0d1c2c, #002d49);
     overflow: hidden;
 }
 
-.stars,
-.stars2,
-.stars3 {
+.nebula {
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: -50%;
+    left: -50%;
+    background: url(https://i.imgur.com/E7FfWfJ.png) center center / cover;
+    opacity: 0.7;
+    animation: nebulaMove 60s ease-in-out infinite;
+}
+
+.asteroids,
+.asteroids2 {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-size: contain;
-    pointer-events: none;
-    animation: animateStar 100s linear infinite;
+    animation: asteroidMove 40s linear infinite;
 }
 
-.stars {
-    background: url(http://www.transparenttextures.com/patterns/stardust.png);
+.asteroids {
+    background-image: url(https://i.imgur.com/GzXQ3hN.png);
     opacity: 0.5;
 }
 
-.stars2 {
-    background: url(https://www.transparenttextures.com/patterns/stardust.png);
+.asteroids2 {
+    background-image: url(https://i.imgur.com/xP1RgB7.png);
     opacity: 0.3;
-    animation-duration: 50s;
+    animation-duration: 80s;
 }
 
-.stars3 {
-    background: url(https://www.transparenttextures.com/patterns/stardust.png);
-    opacity: 0.1;
-    animation-duration: 150s;
+@keyframes nebulaMove {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+
+    50% {
+        transform: scale(1.5) translate(100px, 100px);
+    }
+
+    100% {
+        transform: scale(1) translate(0, 0);
+    }
 }
 
-@keyframes animateStar {
+@keyframes asteroidMove {
     from {
-        transform: translateY(0);
+        transform: translateX(0);
     }
 
     to {
-        transform: translateY(-1000px);
+        transform: translateX(-2000px);
     }
 }
 
-/* Timer Styling */
+/* Cinematic Holographic Timer */
 .timer {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-family: 'Orbitron', sans-serif;
-    color: #fff;
-    font-size: 3em;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+    color: #00ffcc;
+    font-size: 4em;
+    text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc, 0 0 45px #008877;
     letter-spacing: 2px;
-    animation: glow 1.5s ease-in-out infinite alternate;
+    border: 2px solid #00ffcc;
+    padding: 20px;
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.7);
+    animation: hologlow 2s ease-in-out infinite alternate;
 }
 
-@keyframes glow {
+@keyframes hologlow {
     from {
-        text-shadow: 0 0 10px #ffcc33, 0 0 20px #ffcc33, 0 0 30px #ffcc33, 0 0 40px #ff6600, 0 0 70px #ff6600, 0 0 80px #ff6600, 0 0 100px #ff6600;
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 30px rgba(0, 255, 204, 0.7);
     }
 
     to {
-        text-shadow: 0 0 20px #ffcc33, 0 0 30px #ffcc33, 0 0 40px #ff6600, 0 0 50px #ff6600, 0 0 60px #ff6600, 0 0 80px #ff6600, 0 0 120px #ff6600;
+        transform: translate(-50%, -50%) scale(1.1);
+        box-shadow: 0 0 50px rgba(0, 255, 204, 1);
     }
 }
